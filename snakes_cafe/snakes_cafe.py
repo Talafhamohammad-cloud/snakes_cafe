@@ -41,7 +41,7 @@ your_order.append(order)
 while True:
   print("would you like to order any things else")
   order = input(">")
-  if order.lower() == "n":
+  if order.lower() == "quit":
     break
   i += 1
   print(f"{i} order of {order}  have been added to your meal")
