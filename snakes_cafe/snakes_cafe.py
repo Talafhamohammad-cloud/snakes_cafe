@@ -1,4 +1,7 @@
-print("""
+
+
+print(
+    """
 **************************************
 **    Welcome to the Snakes Cafe!   **
 **    Please see our menu below.    **
@@ -29,29 +32,34 @@ Unicorn Tears
 ***********************************
 ** What would you like to order? **
 ***********************************
-""")
-menu = ["Wings", "Cookies", "Spring Rolls", "Salmon", "Steak", "Meat Tornado",
-        "A Literal Garden", "Ice Cream", "Cake", "Pie", "Coffee", "Tea", "Unicorn Tears"]
-your_order=[]        
-i = 1
-order = input(">")
-print(f"{i} order of {order} have been added to your meal ")
-your_order.append(order)
+    """)
 
-while True:
-  print("would you like to order any things else")
-  order = input(">")
-  if order.lower() == "quit":
-    break
-  i += 1
-  print(f"{i} order of {order}  have been added to your meal")
-  your_order.append(order)
-  
-print(f'your order is {your_order}')
-print("thank you\n your order will be ready soon")  
+menu = ['wings', 'cookies', 'spring rolls', 'salmon', 'steak', 'meat tornado',
+            'a literal garden', 'ice Cream', 'cake', 'pie', 'coffee', 'tea', 'unicorn tears']
+your_orders = []
+
+ordersNames = []
 
 
+def ordering():
+
+    order = input('>')
+    if order.lower() in menu:
+        your_orders.append(order)
+        if order not in ordersNames:
+            ordersNames.append(order)
+        print(
+            f'** {your_orders.count(order)} order of {order} have been added to your meal **')
+        ordering()
+    elif order.lower() == 'quit':
+        print('Your order is:')
+        for orderList in ordersNames:
+            print(f'{your_orders.count(orderList)} order of {orderList} ')
+        print('thank you\n your order will be ready soon')
+        print('please dont forget to rate us on cafe website')
+    elif order.lower() not in menu:
+        print(f'sorry {order} is not in our menu')
+        ordering()
 
 
-
-
+ordering()
